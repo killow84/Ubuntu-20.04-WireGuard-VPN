@@ -1,14 +1,14 @@
 # Ubuntu-20.04-WireGuard-VPN
 Ubuntu 20.04 set up WireGuard VPN server
 ----------------------------
-Step 1 – Update your system
+# Step 1 – Update your system
 sudo apt update
 sudo apt upgrade
 
-Step 2 – Installing a WireGuard VPN server on Ubuntu 20.04 LTS
+# Step 2 – Installing a WireGuard VPN server on Ubuntu 20.04 LTS
 sudo apt install wireguard
 
-Step 3 – Configuring WireGuard server
+# Step 3 – Configuring WireGuard server
 sudo -i
 mkdir -m 0700 /etc/wireguard/
 cd /etc/wireguard/
@@ -16,8 +16,8 @@ ls -l privatekey publickey
 cat privatekey
 cat publickey
 ---------------------------------------------------
-#Set Up WireGuard VPN on Ubuntu by Editing wg0.conf
-#Edit or update the /etc/wireguard/wg0.conf file as follows:
+# Set Up WireGuard VPN on Ubuntu by Editing wg0.conf
+# Edit or update the /etc/wireguard/wg0.conf file as follows:
 sudo nano /etc/wireguard/wg0.conf
 or
 sudo vim /etc/wireguard/wg0.conf
@@ -36,18 +36,18 @@ PrivateKey = eEvqkSJVw/7cGUEcJXmeHiNFDLBGOz8GpScshecvNHU=
 -------------------------------------------------------
 Save and close the file when using vim text editor
 -------------------------------------------------------
-Step 4 – Set up UFW firewall rules to open required ports
+# Step 4 – Set up UFW firewall rules to open required ports
 sudo ufw allow 41194/udp
 sudo ufw status
 --------------------------------------------------------
-Step 5 – Enable and start WireGuard service
+# Step 5 – Enable and start WireGuard service
 sudo systemctl enable wg-quick@wg0
 sudo systemctl start wg-quick@wg0
 sudo systemctl status wg-quick@wg0
 sudo wg
 sudo ip a show wg0
 --------------------------------------------------------
-Step 6 – Wireguard VPN client configuration
+# Step 6 – Wireguard VPN client configuration
 sudo apt install wireguard
 sudo sh -c 'umask 077; touch /etc/wireguard/wg0.conf'
 sudo -i
